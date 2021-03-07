@@ -1,27 +1,23 @@
 let testes = gets()
-let itens = []
-let newArray = []
+let casos = []
 let count = 0
+let casosDecrescente = []
 
 for (let i = 0; i < testes; i++) {
-  let casos = {}
-  casos.clientes = gets()
-  casos.senhas = gets().split(" ")
-  itens.push(casos)
+  
+    let cliente = {}
+    cliente.numero = gets()
+    cliente.senhas = gets().split(" ").map(value => Number(value))
+    
+    casos.push(cliente.senhas)
+    casosDecrescente.push([...casos[i]].sort((a,b)=>b-a))
 }
 
-
-for(let i = 0; i < itens; i++){
-  for(let j = 0; j < casos.clientes; j++){
-    newArray.push(itens[i].senhas.sort((a, b) => b - a))
+for(let i = 0; i < casos.length; i++){
+  count = 0
+  for(let j = 0; j < casos[i].length; j++){
+    if(casos[i][j] == casosDecrescente[i][j])
+      count++
   }
+  console.log(count)
 }
-
-for(let i = 0; i < itens.length; i++){
-  for(let j = 0; j < itens[i].senhas; j++){
-    if(newArray[i] != casos.senhas[j])
-    count++
-  }
-}
-
-console.log(count)
