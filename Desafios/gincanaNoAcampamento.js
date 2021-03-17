@@ -1,14 +1,15 @@
 
-let totalAlunos = 3
 let arrayAlunos = [
-    {nome: "Fernanda", ficha: 2},
-    {nome: "Fernando", ficha: 9},
-    {nome: "Gustavo", ficha: 11}
+    {nome: "Maria", ficha: 7},
+    {nome: "Pedro", ficha: 9},
+    {nome: "Joao_Vitor", ficha: 5},
+    {nome: "Isabel", ficha: 12},
+    {nome: "Laura", ficha: 8}
 ]
 
 let fichaAtual = arrayAlunos[0].ficha
 let posicaoAtual = 1
-let indiceAtual = posicaoAtual
+let indiceAtual = 1
 
 while(arrayAlunos.length > 1){
     if(fichaAtual % 2 == 0){
@@ -31,29 +32,42 @@ while(arrayAlunos.length > 1){
             }
         }
     }
+
     fichaAtual = arrayAlunos[indiceAtual].ficha
-    arrayAlunos.slice(indiceAtual, 1)
-    console.log(arrayAlunos)
+    if(fichaAtual % 2 == 0) {
+        posicaoAtual = indiceAtual + 1
+        if(posicaoAtual > arrayAlunos.length - 1) {
+            posicaoAtual = 0
+        }
+    }else {
+        posicaoAtual = indiceAtual - 1
+        if(posicaoAtual > 0) {
+            posicaoAtual = arrayAlunos.length - 1
+        }
+    }
+    //posicaoAtual = verificarFichaAtual(fichaAtual)
+    
+    arrayAlunos.splice(indiceAtual, 1)
+    
 }
 
-console.log(arrayAlunos[0].nome)
-
-/*
-for(let i = 0; i < totalAlunos; i++){
-    let aluno = {}
-    let pessoa = gets().split(" ")
-    aluno.nome = pessoa[0]
-    aluno.ficha = pessoa[1]
-    arrayAlunos.push(aluno)
-}*/
-
-//console.log(arrayAlunos)
+console.log(arrayAlunos[posicaoAtual].nome)
 
 
-
-
-
-
+// function verificarFichaAtual(ficha) {
+//     if(fichaAtual % 2 == 0) {
+//         posicaoAtual = indiceAtual + 1
+//         if(posicaoAtual > arrayAlunos.length - 1) {
+//             posicaoAtual = 0
+//         }
+//     }else {
+//         posicaoAtual = indiceAtual - 1
+//         if(posicaoAtual > 0) {
+//             posicaoAtual = arrayAlunos.length - 1
+//         }
+//     }
+//     return posicaoAtual
+// }
 
 // 3
 // Fernanda 7
